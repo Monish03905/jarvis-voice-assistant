@@ -1,4 +1,4 @@
-# J.A.R.V.I.S.
+# JARVIS — Voice-First Desktop Assistant for Windows
 
 A local-first, voice-controlled JARVIS for Windows: wake word, speaker verification,
 a real reasoning brain (Ollama by default), full desktop control, browser automation
@@ -9,6 +9,12 @@ cinematic HUD with operating modes.
 ```text
 "Hey Jarvis"  →  voiceprint check  →  intent  →  action  →  spoken answer
 ```
+
+> **Status — work in progress.** The backend, skill modules and React HUD are
+> implemented, and text commands through the HUD or `POST /api/command` are the
+> verified path. The voice pipeline (wake word → STT → speaker check) is the area
+> still under active verification on the development machine — expect rough edges
+> there, and run the no-microphone check below first.
 
 ## What it can do
 
@@ -47,7 +53,7 @@ cinematic HUD with operating modes.
 ## Install
 
 ```powershell
-git clone <your-repo> JARVIS
+git clone https://github.com/Monish03905/jarvis-voice-assistant.git JARVIS
 cd JARVIS
 python -m venv .venv
 .venv\Scripts\activate
@@ -56,6 +62,19 @@ copy .env.example .env      # then edit names, city, optional keys
 python setup.py             # checks, voice enrollment, WhatsApp login, contacts
 python start.py             # server + HUD at http://127.0.0.1:8000
 ```
+
+### Verify it runs (no microphone needed)
+
+```powershell
+python start.py --no-voice
+# then, in a second terminal:
+curl http://127.0.0.1:8000/api/status
+```
+
+The HUD should show **LINK** and the status JSON should report the brain, voice and
+health blocks. Interactive API docs live at `http://127.0.0.1:8000/docs` — every HUD
+action is a plain HTTP or WebSocket call, so any skill can be exercised from there or
+from `curl` before wiring up voice.
 
 The React HUD ships prebuilt. To rebuild after frontend changes:
 
