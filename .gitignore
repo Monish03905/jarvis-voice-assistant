@@ -14,7 +14,7 @@ venv/
 .venv/
 .venv.*/
 ENV/
-build/
+/build/
 develop-eggs/
 dist/
 downloads/
@@ -70,10 +70,13 @@ data/
 logs/
 *.npy
 .cache/
+.pytest_cache/
+status.json
+*.db-wal
+*.db-shm
 
 # frontend
 node_modules/
-frontend/build/
 
 # archives
 archive/
