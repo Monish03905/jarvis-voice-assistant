@@ -74,7 +74,7 @@ JARVIS listens for **"Hey Jarvis"**, verifies that the speaker is you, reasons w
 ## Requirements
 
 - **Windows 10/11**
-- **Python 3.10+** (3.11/3.12 tested; 3.11 recommended)
+- **Python 3.10+** (3.11 recommended)
 - **Chrome** installed
 - A **microphone** for voice control
 - [Ollama](https://ollama.com) with two models:
@@ -274,7 +274,7 @@ JARVIS/
 │  └─ build/               prebuilt production HUD (served by FastAPI)
 ├─ tests/                  offline unit and routing tests
 ├─ tools/                  link_email.py, collect_keys.py
-├─ assets/                 UI sounds
+├─ assets/                 UI assets
 ├─ config.py               environment-backed configuration
 ├─ setup.py                first-run wizard
 ├─ start.py                launcher
